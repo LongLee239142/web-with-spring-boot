@@ -17,11 +17,11 @@ import java.util.List;
 
 @RestControllerAdvice
 public class GlobalException {
-    @ExceptionHandler(value = {IdInvalidException.class, UsernameNotFoundException.class, BadCredentialsException.class})
-    public ResponseEntity<RestResponse<Object>> handleIdException(IdInvalidException idException) {
+    @ExceptionHandler(value = {UsernameNotFoundException.class, BadCredentialsException.class})
+    public ResponseEntity<RestResponse<Object>> handleIdException(Exception e) {
         RestResponse<Object> res = new RestResponse<Object>();
         res.setStatusCode(HttpStatus.BAD_REQUEST.value());
-        res.setErrorMessage(idException.getMessage());
+        res.setErrorMessage(e.getMessage());
         res.setMessage("IdInvalidException");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(res);
     }
