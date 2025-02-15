@@ -3,6 +3,8 @@ package vn.hoidanit.jobhunter.domain;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -13,6 +15,7 @@ public class User {
     private String name;
     private String email;
     private String password;
+
 
     public Long getId() {
         return id;

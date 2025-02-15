@@ -27,6 +27,7 @@ dependencies {
     implementation("mysql:mysql-connector-java:8.0.33") // Thay phiên bản mới nhất nếu cần
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
 }
 
 tasks.withType<Test> {
