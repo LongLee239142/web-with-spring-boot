@@ -24,6 +24,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity6")
+    implementation("com.turkraft.springfilter:jpa:3.1.7")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     implementation("mysql:mysql-connector-java:8.0.33") // Thay phiên bản mới nhất nếu cần
     testImplementation("org.springframework.boot:spring-boot-starter-test")

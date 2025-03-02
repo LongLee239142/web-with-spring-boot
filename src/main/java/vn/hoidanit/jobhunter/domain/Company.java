@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import vn.hoidanit.jobhunter.util.SecurityUtil;
 
 import java.time.Instant;
 
@@ -33,4 +35,12 @@ public class Company {
     private String createdBy;
 
     private String updatedBy;
+
+    @PrePersist
+    public void handleBeforeCreatedAt() {
+        this.createdBy = SecurityUtil.getCurrentUserLogin().isPresent()
+                ? SecurityUtil.getCurrentUserLogin().get()
+                : "";
+        this.createdAt = Instant.now();
+    }
 }
