@@ -28,7 +28,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
-            AuthenticationException authException) throws IOException, ServletException {
+                         AuthenticationException authException) throws IOException, ServletException {
         this.delegate.commence(request, response, authException);
         response.setContentType("application/json;charset=UTF-8");
 
@@ -38,7 +38,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
         String errorMessage = Optional.ofNullable(authException.getCause()) // NULL
                 .map(Throwable::getMessage)
                 .orElse(authException.getMessage());
-        res.setErrorMessage(errorMessage);
+        res.setError(errorMessage);
 
         res.setMessage("Token không hợp lệ (hết hạn, không đúng định dạng, hoặc không truyền JWT ở header)...");
 

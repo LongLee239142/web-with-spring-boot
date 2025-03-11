@@ -1,13 +1,10 @@
 package vn.hoidanit.jobhunter.domain;
 
-import java.util.List;
-
 public class RestResponse<T> {
     private int statusCode;
-    private String errorMessage;
-    private List<String> errors;
+    private String error;
 
-    //message có thể là String hoặc arrayList
+    // message có thể là string, hoặc arrayList
     private Object message;
     private T data;
 
@@ -19,12 +16,12 @@ public class RestResponse<T> {
         this.statusCode = statusCode;
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
+    public String getError() {
+        return error;
     }
 
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
+    public void setError(String error) {
+        this.error = error;
     }
 
     public Object getMessage() {
@@ -43,10 +40,4 @@ public class RestResponse<T> {
         this.data = data;
     }
 
-    public void setErrors(List<String> errors) { // Thêm setter cho errors
-        this.errors = errors;
-    }
-    public List<String> getErrors() {
-        return errors;
-    }
 }
