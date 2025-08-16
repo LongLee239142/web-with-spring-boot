@@ -12,6 +12,10 @@ java {
     sourceCompatibility = JavaVersion.VERSION_17
 }
 
+springBoot {
+    mainClass.set("vn.hoidanit.jobhunter.JobhunterApplication")
+}
+
 repositories {
     mavenCentral()
 }
