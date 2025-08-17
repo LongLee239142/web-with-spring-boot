@@ -24,13 +24,13 @@ public class SecurityUtil {
     public static final MacAlgorithm JWT_ALGORITHM = MacAlgorithm.HS256;
     @Autowired
     private JwtEncoder jwtEncoder;
-    @Value("${hoidanit.jwt.base64-secret}")
+    @Value("${longlee.jwt.base64-secret}")
     private String jwtKey;
 
-    @Value("${hoidanit.jwt.access-token-validity-in-seconds}")
+    @Value("${longlee.jwt.access-token-validity-in-seconds}")
     private Long accessTokenExpiration;
 
-    @Value("${hoidanit.jwt.refresh-token-validity-in-seconds}")
+    @Value("${longlee.jwt.refresh-token-validity-in-seconds}")
     private Long refreshTokenExpiration;
 
 

@@ -29,7 +29,7 @@ import vn.longlee.jobhunter.util.SecurityUtil;
 @EnableMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration {
 
-    @Value("${hoidanit.jwt.base64-secret}")
+    @Value("${longlee.jwt.base64-secret}")
     private String jwtKey;
 
     @Bean

@@ -5,7 +5,7 @@ plugins {
     id("io.freefair.lombok") version "8.6"
 }
 
-group = "vn.hoidanit"
+group = "vn.longlee"
 version = "0.0.1-SNAPSHOT"
 
 java {
@@ -13,7 +13,7 @@ java {
 }
 
 springBoot {
-    mainClass.set("vn.hoidanit.jobhunter.JobhunterApplication")
+    mainClass.set("vn.longlee.jobhunter.JobhunterApplication")
 }
 
 repositories {
