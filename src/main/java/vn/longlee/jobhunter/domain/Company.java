@@ -7,6 +7,7 @@ import lombok.Setter;
 import vn.longlee.jobhunter.util.SecurityUtil;
 
 import java.time.Instant;
+import java.util.List;
 
 @Entity
 @Table(name = "companies")
@@ -27,7 +28,6 @@ public class Company {
 
     private String logo;
 
-    // @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss a", timezone = "GMT+7")
     private Instant createdAt;
 
     private Instant updatedAt;
@@ -35,6 +35,10 @@ public class Company {
     private String createdBy;
 
     private String updatedBy;
+
+    @OneToMany( mappedBy = "company", fetch = FetchType.LAZY)
+    List<User> users;
+
 
     @PrePersist
     public void handleBeforeCreatedAt() {
