@@ -1,4 +1,4 @@
-package vn.longlee.jobhunter.domain;
+package vn.longlee.jobhunter.domain.response;
 
 public class RestResponse<T> {
     private int statusCode;

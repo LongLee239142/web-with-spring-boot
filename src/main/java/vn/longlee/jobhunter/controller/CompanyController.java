@@ -8,13 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Pageable;
 import jakarta.validation.Valid;
 import vn.longlee.jobhunter.domain.Company;
-import vn.longlee.jobhunter.domain.RestResponse;
-import vn.longlee.jobhunter.domain.dto.ResultPaginationDTO;
+import vn.longlee.jobhunter.domain.response.RestResponse;
+import vn.longlee.jobhunter.domain.response.ResultPaginationDTO;
 import vn.longlee.jobhunter.service.CompanyService;
 import vn.longlee.jobhunter.util.annotation.ApiMessage;
 import vn.longlee.jobhunter.util.error.IdInvalidException;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")

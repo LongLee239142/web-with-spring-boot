@@ -8,10 +8,10 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import vn.longlee.jobhunter.domain.User;
-import vn.longlee.jobhunter.domain.dto.ResCreateUserDTO;
-import vn.longlee.jobhunter.domain.dto.ResUpdateUserDTO;
-import vn.longlee.jobhunter.domain.dto.ResUserDTO;
-import vn.longlee.jobhunter.domain.dto.ResultPaginationDTO;
+import vn.longlee.jobhunter.domain.response.ResCreateUserDTO;
+import vn.longlee.jobhunter.domain.response.ResUpdateUserDTO;
+import vn.longlee.jobhunter.domain.response.ResUserDTO;
+import vn.longlee.jobhunter.domain.response.ResultPaginationDTO;
 import vn.longlee.jobhunter.repository.UserRepository;
 
 @Service

@@ -18,10 +18,10 @@ import com.turkraft.springfilter.boot.Filter;
 
 import jakarta.validation.Valid;
 import vn.longlee.jobhunter.domain.User;
-import vn.longlee.jobhunter.domain.dto.ResCreateUserDTO;
-import vn.longlee.jobhunter.domain.dto.ResUpdateUserDTO;
-import vn.longlee.jobhunter.domain.dto.ResUserDTO;
-import vn.longlee.jobhunter.domain.dto.ResultPaginationDTO;
+import vn.longlee.jobhunter.domain.response.ResCreateUserDTO;
+import vn.longlee.jobhunter.domain.response.ResUpdateUserDTO;
+import vn.longlee.jobhunter.domain.response.ResUserDTO;
+import vn.longlee.jobhunter.domain.response.ResultPaginationDTO;
 import vn.longlee.jobhunter.service.UserService;
 import vn.longlee.jobhunter.util.annotation.ApiMessage;
 import vn.longlee.jobhunter.util.error.IdInvalidException;

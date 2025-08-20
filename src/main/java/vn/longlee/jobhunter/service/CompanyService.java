@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import vn.longlee.jobhunter.domain.Company;
-import vn.longlee.jobhunter.domain.dto.ResultPaginationDTO;
+import vn.longlee.jobhunter.domain.response.ResultPaginationDTO;
 import vn.longlee.jobhunter.repository.CompanyRepository;
 
 import java.util.Optional;

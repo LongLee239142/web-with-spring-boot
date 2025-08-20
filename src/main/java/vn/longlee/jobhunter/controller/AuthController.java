@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 import vn.longlee.jobhunter.domain.User;
-import vn.longlee.jobhunter.domain.dto.ReqLoginDTO;
-import vn.longlee.jobhunter.domain.dto.ResLoginDTO;
+import vn.longlee.jobhunter.domain.request.ReqLoginDTO;
+import vn.longlee.jobhunter.domain.response.ResLoginDTO;
 import vn.longlee.jobhunter.service.UserService;
 import vn.longlee.jobhunter.util.SecurityUtil;
 import vn.longlee.jobhunter.util.annotation.ApiMessage;
