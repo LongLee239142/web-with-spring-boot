@@ -7,8 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import vn.longlee.jobhunter.domain.Company;
-import vn.longlee.jobhunter.domain.User;
-import vn.longlee.jobhunter.domain.dto.Meta;
 import vn.longlee.jobhunter.domain.dto.ResultPaginationDTO;
 import vn.longlee.jobhunter.repository.CompanyRepository;
 
@@ -26,7 +24,7 @@ public class CompanyService {
     public ResultPaginationDTO fetchAllCompany(Specification<Company> spec, Pageable pageable) {
         Page<Company> pageCompany = this.companyRepository.findAll(spec, pageable);
         ResultPaginationDTO rs = new ResultPaginationDTO();
-        Meta mt = new Meta();
+        ResultPaginationDTO.Meta mt = new ResultPaginationDTO.Meta();
 
         mt.setPage(pageable.getPageNumber() + 1);
         mt.setPageSize(pageable.getPageSize());
@@ -36,7 +34,6 @@ public class CompanyService {
 
         rs.setMeta(mt);
         rs.setResult(pageCompany.getContent());
-
         return rs;
     }
 

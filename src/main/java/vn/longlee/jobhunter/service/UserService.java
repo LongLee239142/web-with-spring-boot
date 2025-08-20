@@ -1,8 +1,6 @@
 package vn.longlee.jobhunter.service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,7 +8,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import vn.longlee.jobhunter.domain.User;
-import vn.longlee.jobhunter.domain.dto.Meta;
 import vn.longlee.jobhunter.domain.dto.ResCreateUserDTO;
 import vn.longlee.jobhunter.domain.dto.ResUpdateUserDTO;
 import vn.longlee.jobhunter.domain.dto.ResUserDTO;
@@ -45,7 +42,7 @@ public class UserService {
     public ResultPaginationDTO fetchAllUser(Specification<User> spec, Pageable pageable) {
         Page<User> pageUser = this.userRepository.findAll(spec, pageable);
         ResultPaginationDTO rs = new ResultPaginationDTO();
-        Meta mt = new Meta();
+        ResultPaginationDTO.Meta mt = new ResultPaginationDTO.Meta();
 
         mt.setPage(pageable.getPageNumber() + 1);
         mt.setPageSize(pageable.getPageSize());
@@ -55,20 +52,8 @@ public class UserService {
 
         rs.setMeta(mt);
 
-        // remove sensitive data
-        List<ResUserDTO> listUser = pageUser.getContent()
-                .stream().map(item -> new ResUserDTO(
-                        item.getId(),
-                        item.getEmail(),
-                        item.getName(),
-                        item.getGender(),
-                        item.getAddress(),
-                        item.getAge(),
-                        item.getUpdatedAt(),
-                        item.getCreatedAt()))
-                .collect(Collectors.toList());
 
-        rs.setResult(listUser);
+        rs.setResult(pageUser.getContent());
 
         return rs;
     }
