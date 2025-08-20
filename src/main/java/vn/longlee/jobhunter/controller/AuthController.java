@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 import vn.longlee.jobhunter.domain.User;
-import vn.longlee.jobhunter.domain.dto.LoginDTO;
+import vn.longlee.jobhunter.domain.dto.ReqLoginDTO;
 import vn.longlee.jobhunter.domain.dto.ResLoginDTO;
 import vn.longlee.jobhunter.service.UserService;
 import vn.longlee.jobhunter.util.SecurityUtil;
@@ -39,7 +39,7 @@ public class AuthController {
     }
 
     @PostMapping("/auth/login")
-    public ResponseEntity<ResLoginDTO> login(@Valid @RequestBody LoginDTO loginDto) {
+    public ResponseEntity<ResLoginDTO> login(@Valid @RequestBody ReqLoginDTO loginDto) {
         // Nạp input gồm username/password vào Security
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                 loginDto.getUsername(), loginDto.getPassword());
