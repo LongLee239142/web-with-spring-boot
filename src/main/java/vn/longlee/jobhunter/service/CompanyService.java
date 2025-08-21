@@ -7,15 +7,20 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import vn.longlee.jobhunter.domain.Company;
+import vn.longlee.jobhunter.domain.User;
 import vn.longlee.jobhunter.domain.response.ResultPaginationDTO;
 import vn.longlee.jobhunter.repository.CompanyRepository;
+import vn.longlee.jobhunter.repository.UserRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CompanyService {
     @Autowired
     private CompanyRepository companyRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     public Company handleCreateCompany(Company company) {
         return companyRepository.save(company);
@@ -36,22 +41,33 @@ public class CompanyService {
         rs.setResult(pageCompany.getContent());
         return rs;
     }
-
-    public Company fetchCompanyById(long id) {
-        Optional<Company> companyOptional = this.companyRepository.findById(id);
-        return companyOptional.orElse(null);
+    public Optional<Company> findById(long id) {
+        return this.companyRepository.findById(id);
     }
+
+
 
     public void handleDeleteCompany(long id) {
-        companyRepository.deleteById(id);
+        Optional<Company> comOptional = this.companyRepository.findById(id);
+        if (comOptional.isPresent()) {
+            Company com = comOptional.get();
+            // fetch all user belong to this company
+            List<User> users = this.userRepository.findByCompany(com);
+            this.userRepository.deleteAll(users);
+            this.companyRepository.deleteById(id);
+        }
     }
 
-    public Company handleUpdateCompany( Company company) {
-        Company companyUpdate = this.fetchCompanyById(company.getId());
-        if (companyUpdate != null) {
-            BeanUtils.copyProperties(company, companyUpdate);
-            companyRepository.save(companyUpdate);
+    public Company handleUpdateCompany(Company com) {
+        Optional<Company> companyOptional = this.companyRepository.findById(com.getId());
+        if (companyOptional.isPresent()) {
+            Company currentCompany = companyOptional.get();
+            currentCompany.setLogo(com.getLogo());
+            currentCompany.setName(com.getName());
+            currentCompany.setDescription(com.getDescription());
+            currentCompany.setAddress(com.getAddress());
+            return this.companyRepository.save(currentCompany);
         }
-        return companyUpdate;
+        return null;
     }
 }

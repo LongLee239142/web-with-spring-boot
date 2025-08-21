@@ -38,9 +38,9 @@ public ResponseEntity<ResultPaginationDTO> getCompany(
             this.companyService.fetchAllCompany(spec, pageable));
 }
     @PutMapping("/companies")
-    public ResponseEntity<Company> updateCompany(@RequestBody Company company) {
-        Company companyLongLee = this.companyService.handleUpdateCompany(company);
-        return ResponseEntity.ok(companyLongLee);
+    public ResponseEntity<Company> updateCompany(@Valid @RequestBody Company reqCompany) {
+        Company updatedCompany = this.companyService.handleUpdateCompany(reqCompany);
+        return ResponseEntity.ok(updatedCompany);
     }
 
     @DeleteMapping("/companies/{id}")
