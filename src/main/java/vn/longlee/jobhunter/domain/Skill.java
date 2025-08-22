@@ -1,6 +1,7 @@
 package vn.longlee.jobhunter.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import lombok.Getter;
@@ -22,13 +23,13 @@ public class Skill {
      private String name;
 
      private Instant createdAt;
-     private Instant updatedAt;
-     private String createdBy;
-     private String updatedBy;
+    private Instant updatedAt;
+    private String createdBy;
+    private String updatedBy;
 
-     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "skills")
-     @JsonIgnore
-     private List<Job> jobs;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "skills")
+    @JsonIgnore
+    private List<Job> jobs;
 
      @PrePersist
      public void handleBeforeCreate() {
