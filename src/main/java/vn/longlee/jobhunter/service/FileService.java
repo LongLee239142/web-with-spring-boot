@@ -17,7 +17,7 @@ import java.nio.file.StandardCopyOption;
 @Service
 public class FileService {
 
-    @Value("${longlee.upload-file.base-path}")
+    @Value("${longlee.upload-file.base-uri}")
     private String baseURI;
 
     public void createDirectory(String folder) throws URISyntaxException {
