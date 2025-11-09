@@ -1,4 +1,5 @@
-package vn.longlee.jobhunter.domain.response;
+package vn.longlee.jobhunter.domain.response.job;
+
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ResCreateJobDTO {
+public class ResUpdateJobDTO {
     private long id;
     private String name;
 
@@ -27,6 +28,6 @@ public class ResCreateJobDTO {
 
     private List<String> skills;
 
-    private Instant createdAt;
-    private String createdBy;
+    private Instant updatedAt;
+    private String updatedBy;
 }

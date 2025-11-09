@@ -1,7 +1,9 @@
 package vn.longlee.jobhunter.domain;
 
 import java.time.Instant;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -39,7 +41,11 @@ public class User {
     private String updatedBy;
     @ManyToOne
     @JoinColumn(name = "company_id")
-    private Company  company;
+    private Company company;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @JsonIgnore
+    List<Resume> resumes;
 
 
     @PrePersist

@@ -14,6 +14,8 @@ import vn.longlee.jobhunter.service.CompanyService;
 import vn.longlee.jobhunter.util.annotation.ApiMessage;
 import vn.longlee.jobhunter.util.error.IdInvalidException;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/v1")
 public class CompanyController {
@@ -28,15 +30,17 @@ public class CompanyController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(this.companyService.handleCreateCompany(reqCompany));
     }
-@GetMapping("/companies")
-@ApiMessage("fetch all companies")
-public ResponseEntity<ResultPaginationDTO> getCompany(
-        @Filter Specification<Company> spec,
-        Pageable pageable) {
 
-    return ResponseEntity.status(HttpStatus.OK).body(
-            this.companyService.fetchAllCompany(spec, pageable));
-}
+    @GetMapping("/companies")
+    @ApiMessage("fetch all companies")
+    public ResponseEntity<ResultPaginationDTO> getCompany(
+            @Filter Specification<Company> spec,
+            Pageable pageable) {
+
+        return ResponseEntity.status(HttpStatus.OK).body(
+                this.companyService.fetchAllCompany(spec, pageable));
+    }
+
     @PutMapping("/companies")
     public ResponseEntity<Company> updateCompany(@Valid @RequestBody Company reqCompany) {
         Company updatedCompany = this.companyService.handleUpdateCompany(reqCompany);
@@ -50,6 +54,13 @@ public ResponseEntity<ResultPaginationDTO> getCompany(
         }
         this.companyService.handleDeleteCompany(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/companies/{id}")
+    @ApiMessage("fetch company by id")
+    public ResponseEntity<Company> fetchCompanyById(@PathVariable("id") long id) {
+        Optional<Company> cOptional = this.companyService.findById(id);
+        return ResponseEntity.ok().body(cOptional.get());
     }
 
 }

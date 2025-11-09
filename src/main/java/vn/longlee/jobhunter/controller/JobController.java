@@ -9,8 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.longlee.jobhunter.domain.Job;
-import vn.longlee.jobhunter.domain.response.ResCreateJobDTO;
-import vn.longlee.jobhunter.domain.response.ResUpdateJobDTO;
+import vn.longlee.jobhunter.domain.response.job.ResCreateJobDTO;
+import vn.longlee.jobhunter.domain.response.job.ResUpdateJobDTO;
 import vn.longlee.jobhunter.domain.response.ResultPaginationDTO;
 import vn.longlee.jobhunter.service.JobService;
 import vn.longlee.jobhunter.util.annotation.ApiMessage;
@@ -41,7 +41,7 @@ public class JobController {
         }
 
         return ResponseEntity.ok()
-                .body(this.jobService.update(job));
+                .body(this.jobService.update(job, currentJob.get()));
     }
 
     @DeleteMapping("/jobs/{id}")
